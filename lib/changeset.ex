@@ -3,13 +3,13 @@ defmodule Brcpfcnpj.Changeset do
   Define funções para serem utilizadas em conjunto com a API de changeset do Ecto.
   """
 
+  @type error() :: {String.t(), Keyword.t()}
   @type t :: %{
-    changes: %{required(atom()) => term()},
-    errors: [{atom(), error()}],
-    valid?: boolean()
-  }
-  @type error :: {atom, error_message}
-  @type error_message :: String.t() | {String.t(), Keyword.t()}
+          required(:changes) => %{required(atom()) => term()},
+          required(:errors) => [{atom(), error()}],
+          required(:valid?) => boolean(),
+          optional(any()) => any()
+        }
 
   @doc """
   Valida se essa mudação é um cnpj válido.
